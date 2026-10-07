@@ -37,15 +37,21 @@ const GRADOS=['Ninguno (civil)','Subteniente','Teniente','Capitán','Mayor','Ten
 const CARRERAS=['ENFERMERIA','GESTION MUNICIPAL','ING DE SISTEMAS','ING AGRONOMICA','ING ELECTRICA'];
 const SEDES=['UNEFA 25','UNEFA 51','UNEFA 57','OTRA INSTITUCIÓN'];
 const NIVELES=['CINU','PREGRADO'];
+const UNIDADES=['EJB','ARB','GNB','AVMB','MILICIA'];
+const CONDICIONES_MILITARES=['Reserva activa', 'Militar activo'];
 
 const F=[
   {s:'DATOS PERSONALES'},
-  {id:'foto',t:'AÑADIR FOTO (tipo carnet)',tipo:'file',h:'Sube 1 archivo de imagen. Tamaño máximo: 10 MB.',r:1},
+  {id:'foto',t:'AÑADIR FOTO (tipo carnet)',tipo:'file',h:'Sube 1 archivo de imagen. Nota: Foto actual tipo carnet RA: (CAMISA), MILITAR ACTIVO (VERDE OLIVA). Tamaño máx: 10 MB.',r:1},
   {id:'nombres',t:'APELLIDOS Y NOMBRES',tipo:'text',r:1},
   {id:'cedula',t:'CÉDULA DE IDENTIDAD',tipo:'text',r:1},
   {id:'telefono',t:'TELÉFONO (S)',tipo:'tel',r:1},
   {id:'email',t:'E-MAIL',tipo:'email',r:1},
   {id:'gradoMilitar',t:'GRADO MILITAR',tipo:'select',o:GRADOS},
+  {id:'diplomadoDefensa',t:'DIPLOMADO DE DEFENSA INTEGRAL',tipo:'radio',o:['SI','NO'],r:1},
+  {id:'componenteFanb',t:'COMPONENTE FANB',tipo:'text',h:'Indique su componente'},
+  {id:'unidadOrigen',t:'UNIDAD DE ORIGEN',tipo:'radio',o:UNIDADES,r:1},
+  {id:'condicionMilitar',t:'CONDICIÓN',tipo:'radio',o:CONDICIONES_MILITARES,r:1},
   {s:'DATOS ACADÉMICOS'},
   {id:'carrera',t:'INDIQUE LA(S) CARRERA(S) A LA(S) QUE PERTENECE',tipo:'check',o:CARRERAS,r:1,h:'Puede marcar más de una'},
   {id:'sede',t:'INDIQUE LA SEDE EN LA QUE LABORA',tipo:'check',o:SEDES,r:1,h:'Puede marcar más de una'},
@@ -59,7 +65,7 @@ const F=[
   {id:'fechaIngreso',t:'FECHA DE INGRESO A LA UNEFA',tipo:'date',h:'Ejemplo: 15/01/2011'},
   {id:'dedicacion',t:'DEDICACIÓN',tipo:'radio',o:['TV','MT','TC','DE'],h:'TV, MT, TC o DE'},
   {id:'categoria',t:'INDIQUE SU CATEGORÍA ACADÉMICA',tipo:'radio',o:['INSTRUCTOR','ASISTENTE','AGREGADO','ASOCIADO','TITULAR']},
-  {id:'condicion',t:'CONDICIÓN',tipo:'radio',o:['FIJO','CONTRATADO']},
+  {id:'condicion',t:'CONDICIÓN LABORAL',tipo:'radio',o:['FIJO','CONTRATADO']},
   {id:'fechaAscenso',t:'FECHA DEL ÚLTIMO ASCENSO',tipo:'date'},
   {id:'asignaturas',t:'INDIQUE LAS ASIGNATURAS QUE PUEDE IMPARTIR EN ESTE NUEVO SEMESTRE',tipo:'area'},
   {id:'disponibilidad',t:'INDIQUE SU DISPONIBILIDAD PARA ESTE NUEVO SEMESTRE',tipo:'area',h:'Ejemplo: LUNES Y MIÉRCOLES EN LA MAÑANA DE 7:00 am a 12:00 pm'},
@@ -132,7 +138,7 @@ async function enviar(){
 
   fetch(URL_SCRIPT, {
     method: 'POST',
-    mode: 'no-cors', // Necesario para evitar bloqueos con Google Apps Script
+    mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(d)
   })
