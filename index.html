@@ -31,13 +31,13 @@
 
 <script>
 // PEGA AQUÍ TU URL DE APPS SCRIPT (la que termina en /exec)
-const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbxhgEJjWwYuVAcJkpalugWVPdzQk-Kxzaykvzza4XLbAZKkCtADr0jIXDjtaHVkywr0OA/exec';
+const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbyRQOBJUjMeI92E_LNNNywubQBNFwbesZMbd-jAEuJx53tFMcLM3jFoJjg6Sep06YQB6w/exec';
 
 const GRADOS=['Ninguno (civil)','Subteniente','Teniente','Capitán','Mayor','Teniente Coronel','Coronel','General de Brigada','General de División','Mayor General','General en Jefe','Sargento','Otro'];
 const CARRERAS=['ENFERMERIA','GESTION MUNICIPAL','ING DE SISTEMAS','ING AGRONOMICA','ING ELECTRICA'];
 const SEDES=['UNEFA 25','UNEFA 51','UNEFA 57','OTRA INSTITUCIÓN'];
 const NIVELES=['CINU','PREGRADO'];
-const UNIDADES=['EJB','ARB','GNB','AVMB','MILICIA'];
+const UNIDADES=['EJB','ARB','GNB','AVB','MILICIA'];
 const CONDICIONES_MILITARES=['Reserva activa', 'Militar activo'];
 
 const F=[
@@ -61,6 +61,7 @@ const F=[
   {id:'tituloPostgrado',t:'TÍTULO DE POSTGRADO (SI POSEE)',tipo:'text'},
   {id:'cargoActual',t:'CARGO ACTUAL',tipo:'radio',o:['DOCENTE','ADMINISTRATIVO']},
   {id:'componenteDocente',t:'POSEE COMPONENTE DOCENTE',tipo:'radio',o:['SI','NO','NO REQUIERE'],r:1},
+  {id:'cohorteComponente',t:'SI MARCÓ SÍ, INDIQUE EL N° DE COHORTE EL CUAL APROBÓ EL COMPONENTE DOCENTE',tipo:'text',h:'Ejemplo: Cohorte III'},
   {id:'detalleComponente',t:'SEÑALAR INSTITUCIÓN Y HORAS ACADÉMICAS CURSADAS Y APROBADAS EN EL COMPONENTE DOCENTE',tipo:'text',h:'Ejemplo: UPEL 320 HORAS'},
   {id:'fechaIngreso',t:'FECHA DE INGRESO A LA UNEFA',tipo:'date',h:'Ejemplo: 15/01/2011'},
   {id:'dedicacion',t:'DEDICACIÓN',tipo:'radio',o:['TV','MT','TC','DE'],h:'TV, MT, TC o DE'},
